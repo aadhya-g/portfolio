@@ -1,182 +1,203 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Aadhya Gupta | Portfolio</title>
-    <style>
+<html lang="en">
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-    }
-    body {
-        background: linear-gradient(to right, #1e1e2f, #3a3a6a);
-        color: white;
-        line-height: 1.6;
-    }
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: rgba(0,0,0,0.4);
-    }
-    header h1 {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-    header p {
-        font-size: 18px;
-        opacity: 0.8;
-    }
-    nav {
-        text-align: center;
-        background: #111;
-        padding: 15px;
-    }
-    nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 20px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    nav a:hover {
-        color: #00ffff;
-    }
-    section {
-        padding: 50px 20px;
-        text-align: center;
-    }
-    section h2 {
-        margin-bottom: 30px;
-        font-size: 28px;
-        border-bottom: 2px solid #00ffff;
-        display: inline-block;
-        padding-bottom: 5px;
-    }
-    .skill-box {
-        display: inline-block;
-        background: #00ffff;
-        color: black;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 20px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-    .skill-box:hover {
-        background: white;
-    }
-    .project-card {
-        background: rgba(255,255,255,0.1);
-        margin: 20px auto;
-        padding: 20px;
-        width: 60%;
-        border-radius: 10px;
-        transition: 0.3s;
-    }
-    .project-card:hover {
-        transform: scale(1.05);
-        background: rgba(255,255,255,0.2);
-    }
-    #contact a {
-        color: #0077b5;
-        text-decoration: none;
-        font-weight: 500;
-    }
-    #contact a:hover {
-        text-decoration: underline;
-    }
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #111;
-        margin-top: 30px;
-    }
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Invitation</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Background */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffb199);
+            background-size: 400% 400%;
+            animation: bgmove 8s infinite alternate;
+            overflow: hidden;
+        }
+
+        /* Background animation */
+        @keyframes bgmove {
+            0% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+
+        /* Floating balloons */
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 8s infinite;
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #333;
+            left: 50%;
+            top: 80px;
+        }
+
+        .balloon:nth-child(1) {
+            background: #ff4d6d;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            background: #ffd166;
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(3) {
+            background: #06d6a0;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        .balloon:nth-child(4) {
+            background: #4cc9f0;
+            left: 85%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-110vh);
+            }
+        }
+
+        /* Invitation Card */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 360px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            transition: transform 0.4s;
+        }
+
+        .card:hover {
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        /* Title */
+        h1 {
+            color: #ff4d6d;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        /* Details */
+        .details {
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            font-size: 17px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Highlight text */
+        .highlight {
+            color: #ff006e;
+            font-weight: bold;
+        }
+
+        /* Button */
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff006e, #ff7eb3);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Footer text */
+        .footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
+
 <body>
-    
-<header>
-    <h1>AADHYA GUPTA</h1>
-    <p>B.Tech IT Student | Aspiring Developer | Tech Enthusiast</p>
-</header>
-    
-<nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-</nav>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am a B.Tech student in Information Technology at Banasthali Vidyapith.
-        I enjoy building real-world applications and solving problems using
-        technology. I have experience in Android development, full-stack web
-        development, and data structures.
-    </p>
-</section>
+    <!-- Balloons -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
 
-<section id="skills">
-    <h2>Skills</h2>
-    <div class="skill-box">C</div>
-    <div class="skill-box">C++</div>
-    <div class="skill-box">Java</div>
-    <div class="skill-box">Kotlin</div>
-    <div class="skill-box">HTML</div>
-    <div class="skill-box">CSS</div>
-    <div class="skill-box">JavaScript</div>
-    <div class="skill-box">Node.js</div>
-    <div class="skill-box">SQL</div>
-</section>
+    <!-- Invitation Card -->
+    <div class="card">
 
-<section id="projects">
-    <h2>Projects</h2>
+        <h1>🎉 Birthday Party 🎂</h1>
 
-    <div class="project-card">
-        <h3>GoCab – Cab Sharing Mobile Application</h3>
-        <p>
-            Android cab-sharing app built using Kotlin with Node.js backend.
-            Used Azure Database for data management and Firebase Authentication
-            for secure login and real-time updates.
-        </p>
+        <p class="subtitle">You're invited to celebrate with me!</p>
+
+        <div class="details">
+            📍 Venue: <span class="highlight">Spicy Bites</span><br>
+            ⏰ Time: <span class="highlight">6:00 PM</span>
+        </div>
+
+        <p>Good food, great friends, and a lot of laughter await you! 🎈</p>
+
+        <button>🎉 See You There</button>
+
+        <p class="footer">Can't wait to celebrate together! ✨</p>
+
     </div>
-
-    <div class="project-card">
-        <h3>Supermarket Billing System</h3>
-        <p>
-            Console-based billing system developed in C++ using OOP concepts
-            and file handling to manage inventory, billing, and product data.
-        </p>
-    </div>
-
-    <div class="project-card">
-        <h3>Food Donation Platform</h3>
-        <p>
-            Full-stack web application connecting food donors and recipients
-            using HTML, CSS, JavaScript, Node.js, MySQL, and Spring Boot.
-        </p>
-    </div>
-
-</section>
-<section id="contact">
-    <h2>Contact</h2>
-
-    <p>Email: aadhyagupta345@gmail.com</p>
-    <p>Phone: +91 7999805230</p>
-    <p>LinkedIn: 
-        <a href="https://www.linkedin.com/in/aadhya-gupta1234" target="_blank">
-            www.linkedin.com/in/aadhya-gupta1234
-        </a>
-    </p>
-
-</section>
-
-<footer>
-    <p>&copy 2026 Aadhya Gupta</p>
-</footer>
 
 </body>
+
 </html>
