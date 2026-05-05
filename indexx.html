@@ -1,1 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aadhya Gupta — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+:root {
+  --bg: #07070f;
+  --surface: #0e0e1a;
+  --card: #121220;
+  --border: #1c1c2e;
+  --border-h: #2e2e46;
+  --rose: #e8649a;
+  --rose-d: #e8649a18;
+  --teal: #2dd4bf;
+  --teal-d: #2dd4bf15;
+  --gold: #f5c842;
+  --text: #ddd8f0;
+  --muted: #66667a;
+  --white: #f0ecff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── GRID BG ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 56px;
+  background: var(--bg)e0;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 900;
+  color: var(--white); text-decoration: none;
+}
+.logo span { color: var(--rose); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--rose); }
+
+/* ── WRAPPER ── */
+main { position: relative; z-index: 1; }
+
+/* ── SECTION COMMONS ── */
+section { padding: 108px 56px; }
+.wrap { max-width: 1060px; margin: 0 auto; }
+
+.s-label {
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; color: var(--rose);
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.s-label::before {
+  content: ''; width: 28px; height: 1px; background: var(--rose);
+}
+
+.s-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900; color: var(--white);
+  letter-spacing: -2px; line-height: 1.08;
+  margin-bottom: 52px;
+}
+.s-heading em { font-style: italic; color: var(--rose); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 130px 56px 80px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px; align-items: end;
+  width: 100%;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--rose-d);
+  border: 1px solid var(--rose)33;
+  padding: 5px 16px; border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; color: var(--rose);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.blink {
+  width: 6px; height: 6px;
+  background: var(--rose); border-radius: 50%;
+  animation: blink 1.8s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+  font-weight: 900; line-height: 0.93;
+  color: var(--white); letter-spacing: -4px;
+  margin-bottom: 10px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+h1 em { font-style: italic; color: var(--rose); }
+
+.hero-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem; color: var(--teal);
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s 0.18s ease both;
+}
+
+.hero-bio {
+  max-width: 500px; font-size: 0.95rem;
+  color: var(--muted); line-height: 1.85;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s 0.26s ease both;
+}
+
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.34s ease both;
+}
+
+.btn-p {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--rose); color: #08000f;
+  padding: 13px 26px; border-radius: 100px;
+  font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.btn-p:hover { transform: translateY(-3px); box-shadow: 0 12px 36px var(--rose)44; }
+
+.btn-o {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border-h); color: var(--text);
+  padding: 13px 26px; border-radius: 100px;
+  font-weight: 500; font-size: 0.85rem;
+  text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
+}
+.btn-o:hover { border-color: var(--rose); color: var(--rose); }
+
+.hero-stats {
+  display: flex; flex-direction: column; gap: 28px;
+  padding-bottom: 8px;
+  animation: fadeLeft 0.8s 0.42s ease both;
+}
+.stat { text-align: right; }
+.stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 900;
+  color: var(--white); line-height: 1;
+}
+.stat-n sup { color: var(--rose); font-size: 1.4rem; }
+.stat-l { font-size: 0.68rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* ── ABOUT ── */
+#about { background: var(--surface); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 72px; align-items: start;
+}
+
+.about-text p { font-size: 0.93rem; color: var(--muted); line-height: 1.9; margin-bottom: 18px; }
+.about-text strong { color: var(--text); font-weight: 600; }
+
+.details { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.d-row { display: flex; align-items: baseline; gap: 14px; font-size: 0.83rem; }
+.d-label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; min-width: 80px;
+}
+.d-val { color: var(--text); }
+.d-val a { color: var(--teal); text-decoration: none; }
+.d-val a:hover { text-decoration: underline; }
+
+.edu-stack { display: flex; flex-direction: column; gap: 18px; }
+
+.edu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--rose);
+  border-radius: 16px; padding: 20px 22px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.edu-card:hover { border-color: var(--rose); transform: translateX(5px); }
+
+.edu-yr { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--rose); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+.edu-deg { font-weight: 700; font-size: 0.9rem; color: var(--white); margin-bottom: 3px; }
+.edu-school { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+.edu-badge {
+  display: inline-block;
+  background: var(--rose-d); border: 1px solid var(--rose)33;
+  padding: 3px 12px; border-radius: 100px;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--rose);
+}
+
+/* ── SKILLS ── */
+#skills { background: var(--bg); }
+
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+.skill-g {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px; padding: 26px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.skill-g:hover { border-color: var(--rose)44; transform: translateY(-4px); }
+
+.sg-icon { font-size: 1.5rem; margin-bottom: 12px; }
+.sg-title { font-weight: 700; font-size: 0.87rem; color: var(--white); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  background: var(--surface); border: 1px solid var(--border-h);
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 0.72rem; color: var(--text);
+  font-family: 'DM Mono', monospace;
+  transition: border-color 0.25s, color 0.25s;
+}
+.chip:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── PROJECTS ── */
+#projects { background: var(--surface); }
+
+.projects-list { display: flex; flex-direction: column; gap: 22px; }
+
+.proj-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px; padding: 34px 38px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; align-items: start;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.proj-card:hover { border-color: var(--rose)55; transform: translateX(6px); }
+
+.proj-card::after {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle at top right, var(--rose)09, transparent 70%);
+  pointer-events: none;
+}
+
+.proj-num {
+  position: absolute; top: 24px; right: 32px;
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem; font-weight: 900;
+  color: var(--border); line-height: 1; user-select: none;
+}
+
+.proj-cat { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--rose); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.proj-title { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.5px; }
+.proj-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.8; margin-bottom: 18px; max-width: 620px; }
+
+.proj-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.ptag {
+  background: var(--teal-d); border: 1px solid var(--teal)33;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 0.7rem; color: var(--teal);
+  font-family: 'DM Mono', monospace;
+}
+
+.status { align-self: flex-start; padding: 5px 14px; border-radius: 100px; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 1px; white-space: nowrap; }
+.s-done { background: #10b98120; border: 1px solid #10b98140; color: #10b981; }
+.s-wip  { background: var(--gold)18; border: 1px solid var(--gold)44; color: var(--gold); }
+
+/* ── ACHIEVEMENTS ── */
+#achievements { background: var(--bg); }
+
+.ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+.ach-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 30px;
+  display: flex; gap: 18px; align-items: flex-start;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.ach-card:hover { border-color: var(--gold)44; transform: translateY(-4px); }
+
+.ach-icon {
+  font-size: 1.8rem; background: var(--gold)15;
+  width: 52px; height: 52px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ach-yr { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+.ach-title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.ach-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+
+/* ── CONTACT ── */
+#contact { background: var(--surface); text-align: center; }
+
+.contact-inner { max-width: 580px; margin: 0 auto; }
+.contact-inner .s-label { justify-content: center; }
+.contact-inner .s-label::before { display: none; }
+
+.contact-bio { font-size: 0.93rem; color: var(--muted); line-height: 1.85; margin-bottom: 38px; }
+
+.email-link {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 3.2vw, 1.8rem);
+  font-weight: 700; color: var(--white);
+  text-decoration: none; letter-spacing: -0.5px;
+  margin-bottom: 36px; transition: color 0.25s;
+}
+.email-link:hover { color: var(--rose); }
+
+.contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+.c-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--card); border: 1px solid var(--border-h);
+  padding: 11px 20px; border-radius: 100px;
+  font-size: 0.8rem; color: var(--text);
+  text-decoration: none; font-family: 'DM Mono', monospace;
+  transition: border-color 0.25s, color 0.25s, transform 0.25s;
+}
+.c-link:hover { border-color: var(--rose); color: var(--rose); transform: translateY(-3px); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 26px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.f-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1rem; color: var(--white); }
+.f-copy { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; }
+
+/* ── CSS ANIMATIONS ── */
+@keyframes fadeUp   { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: translateY(0); } }
+@keyframes fadeLeft { from { opacity:0; transform: translateX(28px); } to { opacity:1; transform: translateX(0); } }
+
+.edu-card:nth-child(1) { animation: fadeUp 0.6s 0.05s ease both; }
+.edu-card:nth-child(2) { animation: fadeUp 0.6s 0.15s ease both; }
+.edu-card:nth-child(3) { animation: fadeUp 0.6s 0.25s ease both; }
+
+.skill-g:nth-child(1) { animation: fadeUp 0.5s 0.05s ease both; }
+.skill-g:nth-child(2) { animation: fadeUp 0.5s 0.12s ease both; }
+.skill-g:nth-child(3) { animation: fadeUp 0.5s 0.19s ease both; }
+.skill-g:nth-child(4) { animation: fadeUp 0.5s 0.26s ease both; }
+.skill-g:nth-child(5) { animation: fadeUp 0.5s 0.33s ease both; }
+.skill-g:nth-child(6) { animation: fadeUp 0.5s 0.40s ease both; }
+
+.proj-card:nth-child(1) { animation: fadeUp 0.6s 0.05s ease both; }
+.proj-card:nth-child(2) { animation: fadeUp 0.6s 0.15s ease both; }
+.proj-card:nth-child(3) { animation: fadeUp 0.6s 0.25s ease both; }
+
+.ach-card:nth-child(1) { animation: fadeUp 0.6s 0.05s ease both; }
+.ach-card:nth-child(2) { animation: fadeUp 0.6s 0.15s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 14px 22px; }
+  .nav-links { display: none; }
+  section { padding: 72px 22px; }
+  #hero { padding: 100px 22px 60px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: row; gap: 32px; }
+  .stat { text-align: left; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .proj-card { grid-template-columns: 1fr; padding: 24px; }
+  .proj-num { top: 16px; right: 20px; font-size: 3.5rem; }
+  .ach-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 22px; }
+}
+
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#hero">Aadhya<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">
+          <span class="blink"></span>
+          Open to Internships · 2025
+        </div>
+        <h1>Aadhya<br><em>Gupta</em></h1>
+        <p class="hero-role">Full Stack Developer &amp; IT Student</p>
+        <p class="hero-bio">B.Tech 3rd year student at Banasthali Vidyapith, building full-stack applications that solve real-world problems — from food donation platforms to Android cab-sharing apps.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-p">View Projects →</a>
+          <a href="#contact" class="btn-o">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n">8.33<sup>+</sup></div>
+          <div class="stat-l">CGPA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">3<sup>+</sup></div>
+          <div class="stat-l">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">2<sup>×</sup></div>
+          <div class="stat-l">Hackathons</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="s-label">01 — About Me</div>
+    <h2 class="s-heading">Curious mind,<br><em>builder's</em> hands.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hi! I'm <strong>Aadhya Gupta</strong>, a passionate Information Technology student at <strong>Banasthali Vidyapith, Jaipur</strong>. I love building things that have real-world impact — from platforms that connect food donors with recipients, to Android apps that make commuting smarter.</p>
+        <p>I'm comfortable across the full stack — frontend, backend, databases, and mobile. My current obsession is <strong>GoCab</strong>, a cab-sharing Android app I'm actively building using Kotlin, Node.js, Firebase, and Azure.</p>
+        <p>I'm actively seeking <strong>internship opportunities</strong> where I can contribute to meaningful products, learn fast, and grow alongside talented teams.</p>
+        <div class="details">
+          <div class="d-row"><span class="d-label">Email</span><span class="d-val"><a href="mailto:aadhyagupta345@gmail.com">aadhyagupta345@gmail.com</a></span></div>
+          <div class="d-row"><span class="d-label">Phone</span><span class="d-val">+91 7999805230</span></div>
+          <div class="d-row"><span class="d-label">Location</span><span class="d-val">Kota, Rajasthan, India</span></div>
+          <div class="d-row"><span class="d-label">LinkedIn</span><span class="d-val"><a href="https://www.linkedin.com/in/aadhya-gupta1234" target="_blank">aadhya-gupta1234</a></span></div>
+        </div>
+      </div>
+      <div class="edu-stack">
+        <div class="edu-card">
+          <div class="edu-yr">2023 — 2027</div>
+          <div class="edu-deg">B.Tech in Information Technology</div>
+          <div class="edu-school">Banasthali Vidyapith, Jaipur</div>
+          <span class="edu-badge">CGPA — 8.33</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-yr">Class XII · 2022</div>
+          <div class="edu-deg">Senior Secondary</div>
+          <div class="edu-school">Sir Padampat Singhania School, Kota</div>
+          <span class="edu-badge">75%</span>
+        </div>
+        <div class="edu-card">
+          <div class="edu-yr">Class X · 2020</div>
+          <div class="edu-deg">Secondary</div>
+          <div class="edu-school">St. Joseph Convent Hr Sec School, Itarsi</div>
+          <span class="edu-badge">67.4%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="s-label">02 — Skills</div>
+    <h2 class="s-heading">Tools of the<br><em>trade</em>.</h2>
+    <div class="skills-grid">
+      <div class="skill-g">
+        <div class="sg-icon">⚙️</div>
+        <div class="sg-title">Languages</div>
+        <div class="chips">
+          <span class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span><span class="chip">Kotlin</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-g">
+        <div class="sg-icon">🌐</div>
+        <div class="sg-title">Web Development</div>
+        <div class="chips">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">Spring Boot</span>
+        </div>
+      </div>
+      <div class="skill-g">
+        <div class="sg-icon">📱</div>
+        <div class="sg-title">Mobile &amp; Cloud</div>
+        <div class="chips">
+          <span class="chip">Android (Kotlin)</span><span class="chip">Firebase</span><span class="chip">Azure DB</span>
+        </div>
+      </div>
+      <div class="skill-g">
+        <div class="sg-icon">🧠</div>
+        <div class="sg-title">CS Fundamentals</div>
+        <div class="chips">
+          <span class="chip">Data Structures</span><span class="chip">Algorithms</span><span class="chip">OOP</span><span class="chip">Operating Systems</span>
+        </div>
+      </div>
+      <div class="skill-g">
+        <div class="sg-icon">🗄️</div>
+        <div class="sg-title">Database</div>
+        <div class="chips">
+          <span class="chip">MySQL</span><span class="chip">Azure Database</span><span class="chip">Firebase DB</span><span class="chip">File Handling</span>
+        </div>
+      </div>
+      <div class="skill-g">
+        <div class="sg-icon">🛠️</div>
+        <div class="sg-title">Tools</div>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span><span class="chip">Android Studio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="s-label">03 — Projects</div>
+    <h2 class="s-heading">Things I've<br><em>built</em>.</h2>
+    <div class="projects-list">
+      <div class="proj-card">
+        <div>
+          <div class="proj-cat">Full Stack · Web App</div>
+          <div class="proj-title">Food Donation Platform</div>
+          <p class="proj-desc">A full-stack web application connecting food donors with recipients to reduce food wastage. Built with user authentication, real-time donation tracking, and a clean dashboard to manage food listings and requests efficiently.</p>
+          <div class="proj-tags">
+            <span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">Node.js</span><span class="ptag">MySQL</span><span class="ptag">Spring Boot</span>
+          </div>
+        </div>
+        <span class="status s-done">✓ Completed</span>
+        <div class="proj-num">01</div>
+      </div>
+      <div class="proj-card">
+        <div>
+          <div class="proj-cat">C++ · Console App</div>
+          <div class="proj-title">Supermarket Billing System</div>
+          <p class="proj-desc">A console-based billing and inventory management system in C++. Demonstrates strong OOP principles — classes, objects, inheritance — with persistent data via file handling. Auto-updates stock after every transaction.</p>
+          <div class="proj-tags">
+            <span class="ptag">C++</span><span class="ptag">OOP</span><span class="ptag">File Handling</span>
+          </div>
+        </div>
+        <span class="status s-done">✓ Completed</span>
+        <div class="proj-num">02</div>
+      </div>
+      <div class="proj-card">
+        <div>
+          <div class="proj-cat">Android · Mobile App</div>
+          <div class="proj-title">GoCab — Cab Sharing App</div>
+          <p class="proj-desc">An Android cab-sharing application for smarter, cost-effective commutes. Kotlin native frontend, Node.js backend, Azure Database for secure data management, and Firebase for real-time rider-driver communication.</p>
+          <div class="proj-tags">
+            <span class="ptag">Kotlin</span><span class="ptag">Node.js</span><span class="ptag">Azure DB</span><span class="ptag">Firebase Auth</span>
+          </div>
+        </div>
+        <span class="status s-done">✓ Completed</span>
+        <div class="proj-num">03</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="s-label">04 — Achievements</div>
+    <h2 class="s-heading">Competed &amp;<br><em>won</em>.</h2>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div>
+          <div class="ach-yr">2025</div>
+          <div class="ach-title">Top 10 — Hack The Horizon</div>
+          <p class="ach-desc">Secured a Top 10 position in "Hack The Horizon", competing against teams from multiple institutions to build innovative tech solutions under time pressure.</p>
+        </div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🇮🇳</div>
+        <div>
+          <div class="ach-yr">2024</div>
+          <div class="ach-title">Smart India Hackathon</div>
+          <p class="ach-desc">Participated in SIH 2024 — India's largest open innovation model — working on real government problem statements and collaborating at national level.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="s-label">05 — Contact</div>
+      <h2 class="s-heading">Let's build<br>something <em>great</em>.</h2>
+      <p class="contact-bio">I'm actively looking for internship opportunities. If you're working on something interesting or want to collaborate, I'd love to hear from you!</p>
+      <a href="mailto:aadhyagupta345@gmail.com" class="email-link">aadhyagupta345@gmail.com</a>
+      <div class="contact-links">
+        <a href="tel:+917999805230" class="c-link">📞 +91 7999805230</a>
+        <a href="https://www.linkedin.com/in/aadhya-gupta1234" target="_blank" class="c-link">🔗 LinkedIn</a>
+        <a href="mailto:aadhyagupta345@gmail.com" class="c-link">✉️ Send Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="f-name">Aadhya Gupta</div>
+  <div class="f-copy">&copy; 2026 · Pure HTML &amp; CSS · Kota, India</div>
+</footer>
+
+</body>
+</html>
